@@ -17,4 +17,4 @@ const commands = [
   bot(new SlashCommandBuilder().setName("requests").setDescription("View pending friend requests"))
 ].map(c=>c.toJSON());
 export { commands };
-export const embed = (title, description, color=0x5865F2) => new EmbedBuilder().setColor(color).setTitle(title).setDescription(description || "No details returned.").setFooter({text:"FNLB • Self-hosted control panel"}).setTimestamp();
+export const embed = (title, description, color=0x5865F2) => new EmbedBuilder().setColor(color).setTitle(title).setDescription(description || "No details returned.").setFooter({text:"FNLB Discord"}).setTimestamp();
