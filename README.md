@@ -1,25 +1,23 @@
-# FNLB in Discord
+# FNLB Discord Bot
 
-Self-host a Discord slash-command bot to control your own FN LobbyBots account through the official API.
+A small Discord bot for managing your FN LobbyBots. Run it yourself and connect it to your FNLB API key.
 
-## Features
+## What it can do
 
-- Browse bots, autocomplete bot names and inspect bot details
-- View party members and friends
+- List your bots and check their details
+- See who's in a bot's party or friend list
 - Start, stop and restart bots
-- Change skin, emote, backpack, pickaxe, shoes, sidekick and banner
-- Party actions: kick, promote, invite, join, hide, show and leave
-- Friend actions: add, remove, block and unblock
-- Friend request overview, setup check, status and help
-- API errors show codes, scopes, retry timing and request IDs
+- Change bot cosmetics
+- Manage party members and friends
+- Check pending friend requests
 
-## Requirements
+## You need
 
-- Node.js 20+
-- A Discord application and bot
-- An FN LobbyBots API key from https://fortnitelobbybots.com/developers
+- Node.js 20 or newer
+- A Discord bot application
+- An FN LobbyBots API key: https://fortnitelobbybots.com/developers
 
-## Installation
+## Set it up
 
 ```bash
 git clone https://github.com/nikobutcooler/FNLB-But-In-Discord.git
@@ -28,15 +26,16 @@ npm install
 cp .env.example .env
 ```
 
-Fill in `.env`:
-- `DISCORD_TOKEN` — bot token from Discord Developer Portal
-- `DISCORD_CLIENT_ID` — application ID
-- `DISCORD_GUILD_ID` — optional test server ID (guild commands update instantly)
-- `FNLB_API_KEY` — your private FN LobbyBots API key
+Open `.env` and add:
 
-Invite the Discord bot with the `bot` and `applications.commands` scopes. Give it only the permissions needed to send messages and embeds.
+- `DISCORD_TOKEN` — your bot token
+- `DISCORD_CLIENT_ID` — your Discord application ID
+- `FNLB_API_KEY` — your FN LobbyBots API key
+- `DISCORD_GUILD_ID` — optional; set this to test commands in one server
 
-Register commands and launch:
+Invite the bot with the `bot` and `applications.commands` scopes. It only needs permission to send messages and embeds.
+
+Then run:
 
 ```bash
 npm run register
@@ -45,24 +44,20 @@ npm start
 
 ## Commands
 
-**General:** `/help`, `/setup`, `/status`, `/bots`, `/bot`
+**General:** `/help` `/setup` `/status` `/bots` `/bot`
 
-**Party:** `/party`, `/kick`, `/promote`, `/invite`, `/join`, `/hide`, `/show`, `/leave`
+**Party:** `/party` `/kick` `/promote` `/invite` `/join` `/hide` `/show` `/leave`
 
-**Friends:** `/friends`, `/requests`, `/addfriend`, `/removefriend`, `/block`, `/unblock`
+**Friends:** `/friends` `/requests` `/addfriend` `/removefriend` `/block` `/unblock`
 
-**Power:** `/start`, `/stop`, `/restart`
+**Bot controls:** `/start` `/stop` `/restart`
 
-**Cosmetics:** `/skin`, `/emote`, `/backpack`, `/pickaxe`, `/shoes`, `/sidekick`, `/banner`
+**Cosmetics:** `/skin` `/emote` `/backpack` `/pickaxe` `/shoes` `/sidekick` `/banner`
 
-Bot options support autocomplete: type part of a bot name or ID to select it.
+Start typing a bot's name in the `bot` option to use autocomplete.
 
-## API scopes
+## A few notes
 
-Use least privilege. Reading bots, parties and friends requires their corresponding read scopes. Power, cosmetics, party and friend actions require matching write scopes. The API still enforces plan limits and cooldowns.
+Your API key stays in your local `.env` file. Don't post it or commit it to GitHub. The API key also needs the right scopes for the commands you want to use, and FNLB plan limits still apply.
 
-## Security
-
-Never commit or share `.env`. Keep the FNLB key on the host; it is never accepted through Discord commands. If a key leaks, revoke it from the FNLB Developers page.
-
-API documentation: https://fortnitelobbybots.com/docs/api/overview
+API docs: https://fortnitelobbybots.com/docs/api/overview
